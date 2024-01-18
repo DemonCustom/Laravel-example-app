@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostStoreRequest;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Cast\Bool_;
 
 class PostController extends Controller
 {
@@ -27,9 +29,20 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostStoreRequest $request): Post // в переменную дата прийдут только валидированные данные // ?? если есть дата дескриптион то пиши дескриптион иначе нулл // save соранение в базу данных
     {
-        dd($request);
+        $data = $request->validated(); 
+
+        $post = new Post();
+
+        $post->name        = $data['name'];
+        $post->description = $data['description'] ?? null;
+        $post->content     = $data['content'];
+        $post->poster      = $data['poster'];
+
+        $post->save();
+
+        return $post;
     }
 
     /**

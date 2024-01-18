@@ -15,6 +15,11 @@
         <textarea name="content" id="content" cols="30" rows="10"></textarea>
     </label>
 
+    <label>
+        Постер
+        <input type="text" name="poster" id="poster">
+    </label>
+
     <button type="submit">
         <span>Сохранить</span>
     </button>
