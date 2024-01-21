@@ -1,4 +1,4 @@
-<form action="{{ route('posts.store') }}" method="POST">
+<form action="{{ route('posts.store') }}" method="post">
     @csrf
     <label>
         Название
