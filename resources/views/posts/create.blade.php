@@ -1,4 +1,4 @@
-<form action="{{ route('posts.store') }}" method="post">
+<form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
     @csrf
     <label>
         Название
@@ -17,7 +17,7 @@
 
     <label>
         Постер
-        <input type="text" name="poster" id="poster">
+        <input type="file" name="poster" id="poster">
     </label>
 
     <button type="submit">
