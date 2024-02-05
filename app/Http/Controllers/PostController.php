@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostStoreRequest;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+
 
 
 class PostController extends Controller
@@ -27,7 +29,9 @@ class PostController extends Controller
      */
     public function create(): Factory|Application|View
     {
-        return view('posts.create');
+        $categories = Category::all();
+
+        return view('posts.create',['categories' => $categories]);
     }
 
     /**
@@ -35,7 +39,7 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request): Post // в переменную дата прийдут только валидированные данные // ?? если есть дата дескриптион то пиши дескриптион иначе нулл // save соранение в базу данных
     {
-        $data = $request->validated();
+        $data = $request->validated(); // все что проверенно из реквеста сохраняем в массив дата
 
         $image = $data['poster'];
         $imageName = Str::random(40) . '.' . $image->getClientOriginalExtension();
@@ -52,6 +56,15 @@ class PostController extends Controller
         $post->poster      = $imageName;
 
         $post->save();
+
+        if ($data['category_ids']) { // если существует массив то тогда
+            $post->categories()->attach($data['category_ids']); // то мы привязываем конкретный экземпляр к модели
+        }
+
+        // attach привязать
+        // detach отвязать
+        // sync ?????
+
 
         return $post;
     }

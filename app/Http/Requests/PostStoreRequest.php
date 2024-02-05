@@ -23,10 +23,12 @@ class PostStoreRequest extends FormRequest
     public function rules(): array // правила по которым будем валидировать
     {
         return [
-            'name'        => 'required|string|min:3|max:25',
-            'description' => 'string|min:3|max:25',
-            'content'     => 'required|string|min:10',
-            'poster'      => 'required|image:jpg,jpeg,png|max:10240',
+            'name'           => 'required|string|min:3|max:25',
+            'description'    => 'string|min:3|max:25',
+            'content'        => 'required|string|min:10',
+            'poster'         => 'required|image:jpg,jpeg,png|max:10240',
+            'category_ids'   => 'array',
+            'category_ids.*' => 'sometimes|integer',
         ];
     }
 }
