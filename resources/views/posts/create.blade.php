@@ -2,7 +2,7 @@
     @csrf
     <label>
         Название
-        <input type="text" name="name" placeholder="название поста">
+        <input type="text" name="name" placeholder="название поста" required>
     </label>
 
     <label>
@@ -12,12 +12,12 @@
 
     <label>
         Содержимое
-        <textarea name="content" id="content" cols="30" rows="10"></textarea>
+        <textarea name="content" id="content" cols="30" rows="10" required></textarea>
     </label>
 
     <label>
         Постер
-        <input type="file" name="poster" id="poster">
+        <input type="file" name="poster" id="poster" required>
     </label>
 
     <label>
@@ -28,10 +28,7 @@
             @endforeach
         </select>
     </label>
-    <label>
-        Постер
-        <input type="file" name="poster" id="poster">
-    </label>
+  
     <button type="submit">
         <span>Сохранить</span>
     </button>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostStoreRequest;
+use App\Http\Requests\Post\PostStoreRequest;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Contracts\View\Factory;
