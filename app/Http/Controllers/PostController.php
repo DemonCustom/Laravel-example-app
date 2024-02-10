@@ -39,6 +39,7 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request): Post // в переменную дата прийдут только валидированные данные // ?? если есть дата дескриптион то пиши дескриптион иначе нулл // save соранение в базу данных
     {
+
         $data = $request->validated(); // все что проверенно из реквеста сохраняем в массив дата
 
         $image = $data['poster'];

@@ -11,6 +11,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 
+
 class CategoryController extends Controller
 {
     /**
@@ -58,7 +59,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+       //
     }
 
     /**

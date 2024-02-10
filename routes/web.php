@@ -28,4 +28,4 @@ Route::resource('posts', PostController::class);
 
 Route::resource('categories', CategoryController::class);
 
-Route::resourse('comments', CommentController::class)->only(['store','destroy']);
+ // Route::resourse('comments', CommentController::class)->only(['store','destroy']);

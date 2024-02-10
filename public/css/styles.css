@@ -1,0 +1,193 @@
+/* Стили для общего контейнера */
+body {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+html{
+    height: 100%;
+}
+
+/* Стили для формы */
+form {
+    max-width: 600px;
+    max-height: max-content;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для основного заголовка */
+.main_title {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #719ece;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+/* Стили для заголовка */
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #719ece;
+    margin-bottom: 5px;
+}
+
+/* Стили для описания */
+.description {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #719ece;
+}
+
+/* Стили для содержимого */
+.content {
+    font-size: 20px;
+    font-weight: bold;
+    color: #719ece;
+    margin-bottom: 5px;
+}
+
+/* Стили для постера */
+.poster {
+    font-size: 20px;
+    font-weight: bold;
+    color: #719ece;
+    margin-bottom: 5px;
+}
+
+.image_preview{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Стили для категории */
+.category {
+    font-size: 20px;
+    font-weight: bold;
+    color: #719ece;
+    margin-bottom: 5px;
+}
+
+/* Стили для кнопки */
+.button {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.input_content {
+    width: 95%;
+    height: 90px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
+.input_category {
+    width: 99%;
+    height: 90px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
+
+/* Стили для инпута и текстового поля */
+.input {
+    width: 95%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    /* Общий стиль для страницы */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+    }
+
+    /* Стили для формы */
+    form {
+        max-width: 600px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Стили для заголовка */
+    .title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    /* Стили для описания */
+    .description {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    /* Стили для содержимого */
+    .content {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    /* Стили для постера */
+    .poster {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    /* Стили для категории */
+    .category {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    /* Стили для кнопки */
+    .button {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    /* Стили для инпута и текстового поля */
+    .input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+    }
+
+}
+
+/* Стили для кнопки сохранить */
+button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #719ece;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #527ba0;
+}

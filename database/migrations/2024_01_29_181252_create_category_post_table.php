@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('post_id');
         });
     }
-  
+    
     /**
      * Reverse the migrations.
      */
