@@ -40,6 +40,8 @@ class PostController extends Controller
     public function store(PostStoreRequest $request): Post // в переменную дата прийдут только валидированные данные // ?? если есть дата дескриптион то пиши дескриптион иначе нулл // save соранение в базу данных
     {
 
+        dd($request);
+
         $data = $request->validated(); // все что проверенно из реквеста сохраняем в массив дата
 
         $image = $data['poster'];
@@ -58,9 +60,20 @@ class PostController extends Controller
 
         $post->save();
 
-        if ($data['category_ids']) { // если существует массив то тогда
-            $post->categories()->attach($data['category_ids']); // то мы привязываем конкретный экземпляр к модели
+
+        if (isset($data['categories_ids'])) {
+            $category = Category::find($data['categories_ids']);
+            $post->categories()->attach($category->id);
         }
+
+        if (isset($data['posts_ids'])) {
+            $post = Post::find($data['posts_ids']);
+            $post->posts()->attach($post->id);
+        }
+
+
+
+
 
         // attach привязать
         // detach отвязать

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
 </head>
 <body>
 <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
@@ -47,18 +47,16 @@
 
             <label class="category">
                 Категория
-                <select class="input_category" name="category_ids" id="category_ids" multiple>
+                <select class="input_category" name="category_ids[]" id="category_ids" multiple>
                     @foreach ($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
             </label>
 
-            <div class="button">
-                <button type="submit">
+                <button class="button" type="submit">
                     <span>Сохранить</span>
                 </button>
-            </div>
         </div>
     </div>
 </form>

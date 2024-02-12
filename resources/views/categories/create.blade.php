@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
 </head>
 <body>
 <form action="{{route('categories.store')}}" method="post" enctype="multipart/form-data">
@@ -28,15 +28,16 @@
         var reader = new FileReader();
         reader.onload = function() {
             var output = document.getElementById('imagePreview');
-            output.innerHTML = '<img src="' + reader.result + '" style="max-width: 100%; max-height: 300px; border-radius: 5px;">';
+            output.innerHTML = '<img src="' + reader.result + '" style="max-width: 100%; max-height: 300px; border-radius: 5px;margin:5%;">';
         };
         reader.readAsDataURL(file);
     }
     </script>
 
-    <button class="button" type="submit">
-        <span>Сохранить</span>
-    </button>
+        <button class="button"  type="submit">
+            <span>Сохранить</span>
+        </button>
+
 </form>
 </body>
 </html>
