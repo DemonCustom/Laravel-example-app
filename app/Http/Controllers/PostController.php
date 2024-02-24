@@ -7,7 +7,6 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -19,9 +18,11 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Collection
+    public function index(): Application|Factory|View
     {
-        return Post::all();
+        $posts = Post::with('categories')->get(); // дай мне все посты с категорией (жадная загрузка)
+
+        return view('index', compact('posts'));
     }
 
     /**
@@ -30,8 +31,8 @@ class PostController extends Controller
     public function create(): Factory|Application|View
     {
         $categories = Category::all();
-
         return view('posts.create',['categories' => $categories]);
+
     }
 
     /**
@@ -40,7 +41,7 @@ class PostController extends Controller
     public function store(PostStoreRequest $request): Post // в переменную дата прийдут только валидированные данные // ?? если есть дата дескриптион то пиши дескриптион иначе нулл // save соранение в базу данных
     {
 
-        dd($request);
+        // dd($request);
 
         $data = $request->validated(); // все что проверенно из реквеста сохраняем в массив дата
 
@@ -56,23 +57,16 @@ class PostController extends Controller
         $post->name        = $data['name'];
         $post->description = $data['description'] ?? null;
         $post->content     = $data['content'];
+        $post->created_at  = $data['created_at'];
         $post->poster      = $imageName;
 
         $post->save();
 
-
-        if (isset($data['categories_ids'])) {
-            $category = Category::find($data['categories_ids']);
-            $post->categories()->attach($category->id);
+        if (array_key_exists('category_ids', $data)) { // проверяет есть ли в массиве ключ если есть выполняет
+            $post->categories()->attach($data['category_ids']); // присвоение категории
         }
 
-        if (isset($data['posts_ids'])) {
-            $post = Post::find($data['posts_ids']);
-            $post->posts()->attach($post->id);
-        }
-
-
-
+        $post->load('categories'); // обновляет пост и связи
 
 
         // attach привязать
