@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,16 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
-Route::get('/',[PostController::class, 'index']); // этот роут будет выполнять метод индекс в контроллере
-
-Route::get('/test-route',function () {
-    return 'Тестовый роут';
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Route::resource('posts', PostController::class);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('categories', CategoryController::class);
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
- //Route::resourse('comments', CommentController::class)->only(['store','destroy']);
+require __DIR__.'/auth.php';

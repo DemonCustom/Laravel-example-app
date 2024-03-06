@@ -80,9 +80,15 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post): Post
+    public function show(Post $post): Factory|Application|View
     {
-        return $post;
+
+
+        if (!$post) {
+            abort(404); // Return a 404 error if the post is not found
+        }
+
+        return view('posts.show',compact('post'));
     }
 
     /**

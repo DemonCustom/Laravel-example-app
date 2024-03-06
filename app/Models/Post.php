@@ -22,9 +22,11 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected array $dates = ['created_at'];
+
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class, 'category_post', 'post_id', 'category_id');
+        return $this->belongsToMany(Category::class);
     }
 
     public function comments(): HasMany
