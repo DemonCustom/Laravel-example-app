@@ -5,20 +5,20 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Post;
+use App\Models\Category;
 
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
 
 /**
- * @extends ModelResource<Post>
+ * @extends ModelResource<Category>
  */
-class PostResource extends ModelResource
+class CategoryResource extends ModelResource
 {
-    protected string $model = Post::class;
+    protected string $model = Category::class;
 
-    protected string $title = 'Посты';
+    protected string $title = 'Категории';
 
     public function fields(): array
     {

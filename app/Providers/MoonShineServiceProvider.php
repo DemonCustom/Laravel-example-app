@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\MoonShine\Resources\CategoryResource;
+use App\MoonShine\Resources\PostResource;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\MoonShine;
 use MoonShine\Menu\MenuGroup;
@@ -37,8 +39,16 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                ),
             ]),
 
-            MenuItem::make('Documentation', 'https://moonshine-laravel.com')
-               ->badge(fn() => 'Check'),
+            MenuGroup::make('Статьи',[
+                MenuItem::make('Посты',new PostResource())
+                ->badge(fn() => Post::count())
+                ->icon('heroicons.outline.academic-cap'),
+
+                MenuItem::make('Категории',new CategoryResource())
+            ]),
+
+            // MenuItem::make('Documentation', 'https://moonshine-laravel.com')
+            //    ->badge(fn() => 'Check'),
         ];
     }
 
