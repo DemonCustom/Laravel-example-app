@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Models\Category;
+use App\Models\Post;
 use App\MoonShine\Resources\CategoryResource;
 use App\MoonShine\Resources\PostResource;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
@@ -45,6 +47,9 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 ->icon('heroicons.outline.academic-cap'),
 
                 MenuItem::make('Категории',new CategoryResource())
+                ->badge(fn() => Category::count())
+                ->icon('heroicons.outline.bars-3'),
+
             ]),
 
             // MenuItem::make('Documentation', 'https://moonshine-laravel.com')
