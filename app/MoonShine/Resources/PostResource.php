@@ -42,7 +42,9 @@ class PostResource extends ModelResource
                     ->required()
                     ->hideOnIndex(),
                 BelongsToMany::make('Категории','categories',resource: new CategoryResource())
-
+                    ->selectMode()
+                    ->placeholder('Выберите категорию')
+                    ->inline(badge: true)
             ]),
         ];
     }
