@@ -24,6 +24,11 @@ class Post extends Model
 
     protected array $dates = ['created_at'];
 
+    public function getRouteKeyName():string
+    {
+        return 'slug';
+    }
+
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);

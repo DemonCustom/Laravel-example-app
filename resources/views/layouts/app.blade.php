@@ -7,6 +7,7 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ env('APP_NAME') }}</title>
+    @vite(['resources/js/app.js'])
 
     <!--
     Template 2085 Neuron
@@ -30,7 +31,7 @@
                     <span class="icon icon-bar"></span>
                     <span class="icon icon-bar"></span>
                 </button>
-                <a href="index.html" class="navbar-brand">Neuron</a>
+                <a href="{{route('home_page')}}" class="navbar-brand">Neuron</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">

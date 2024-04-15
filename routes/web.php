@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [Postcontroller::class , 'index']);
+Route::get('/', [Postcontroller::class , 'index'])-> name('home_page');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

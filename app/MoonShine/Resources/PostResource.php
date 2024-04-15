@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Post;
 
 use MoonShine\Fields\Image;
+use MoonShine\Fields\Slug;
 use MoonShine\Fields\TinyMce;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
@@ -33,6 +34,10 @@ class PostResource extends ModelResource
                 Text::make('Название','name')
                     ->required()
                     ->sortable(),
+                Slug::make('Читаемая ссылка','slug')
+                    ->unique()
+                    ->from('name')
+                    ->hint('Заполнится автоматически, если оставить пустым'),
                 TinyMce::make('Краткое описание','description')
                     ->hideOnIndex(),
                 TinyMce::make('Текст','content')
@@ -40,6 +45,8 @@ class PostResource extends ModelResource
                     ->hideOnIndex(),
                 Image::make('Картинка','poster')
                     ->required()
+                    ->dir('posts/posters')
+                    ->removable()
                     ->hideOnIndex(),
                 BelongsToMany::make('Категории','categories',resource: new CategoryResource())
                     ->selectMode()

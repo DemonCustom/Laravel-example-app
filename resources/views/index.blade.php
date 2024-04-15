@@ -23,14 +23,14 @@
                     @foreach ($posts as $post)
                         <div class="blog-post-thumb">
                             <div class="blog-post-image">
-                                <a href="{{ route('posts.show', $post->id) }}">
-                                    <img src="{{ asset('storage/posts/posters/' . $post->poster) }}" class="img-responsive"
+                                <a href="{{ route('posts.show', $post->slug) }}">
+                                    <img src="{{ asset('storage/' . $post->poster) }}" class="img-responsive"
                                         alt="Blog Image">
                                 </a>
                             </div>
 
                             <div class="blog-post-title">
-                                <h3> <a href="{{ route('posts.show', $post->id) }}"></a>{{ $post->name }}</h3>
+                                <h3> <a href="{{ route('posts.show', $post->slug) }}"></a>{{ $post->name }}</h3>
                             </div>
 
                             <div class="blog-post-format">
@@ -42,8 +42,8 @@
                             </div>
 
                             <div class="blog-post-des">
-                                <p>{!! nl2br($post->description) !!}</p>
-                                <a href="{{ route('posts.show', $post->id) }}" class="btn btn-default">Читать далее...</a>
+                                {!! nl2br($post->description) !!}
+                                <a href="{{ route('posts.show', $post->slug) }}" class="btn btn-default">Читать далее...</a>
                             </div>
                         </div>
                     @endforeach
